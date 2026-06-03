@@ -1,0 +1,5 @@
+gcloud auth login
+gcloud config set project healthcare-ai-platform-498222
+gcloud services enable cloudbuild.googleapis.com run.googleapis.com containerregistry.googleapis.com
+gcloud builds submit --tag gcr.io/healthcare-ai-platform-498222/healthcare-ai .
+gcloud run deploy healthcare-ai --image gcr.io/healthcare-ai-platform-498222/healthcare-ai --platform managed --region us-central1 --allow-unauthenticated --memory 4Gi --cpu 2 --timeout 300 --port 8080
